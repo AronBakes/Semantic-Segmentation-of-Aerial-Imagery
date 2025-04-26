@@ -1,3 +1,6 @@
+# Ignore external reference project
+dd-ml-segmentation-benchmark/
+
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
