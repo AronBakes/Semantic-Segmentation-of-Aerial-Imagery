@@ -14,3 +14,5 @@ This project investigates how semantic segmentation of aerial imagery can be imp
 ## Run Instructions
 - Open the `.ipynb` notebooks with Jupyter or VS Code.
 - Alternatively, run `.py` scripts directly.
+
+# Hello
