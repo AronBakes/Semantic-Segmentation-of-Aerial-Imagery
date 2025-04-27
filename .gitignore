@@ -4,6 +4,9 @@ data/
 # Ignore external reference project
 dd-ml-segmentation-benchmark/
 
+# Ignore zone identifiers
+*.Zone.Identifier
+
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
