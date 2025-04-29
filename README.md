@@ -42,7 +42,8 @@ To split the dataset into `train`, `val`, and `test`:
 python3 libs/datasets.py
 ```
 
-After running this you should see the output:
+After running this you should see the output:  
+
 📂 TRAIN: 44 images | 44 elevations | 44 labels
 
 📂 VAL: 5 images | 5 elevations | 5 labels
