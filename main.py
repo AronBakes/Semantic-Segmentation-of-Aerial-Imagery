@@ -60,3 +60,49 @@ if __name__ == '__main__':
     score, _ = scoring.score_predictions(args.dataset, basedir=wandb.run.dir)
     print(score)
     wandb.log(score)
+
+
+color_to_class = {
+    (75, 25, 230): 0,       # BUILDING
+    (180, 30, 145): 1,      # CLUTTER
+    (75, 180, 60): 2,       # VEGETATION
+    (48, 130, 245): 3,      # WATER
+    (255, 255, 255): 4,     # GROUND
+    (200, 130, 0): 5,       # CAR
+    (255, 0, 255): 6        # IGNORE
+}
+
+
+
+'''
+def convert_color_to_class(image):
+    """
+    Convert a color image to a class label image
+    """
+    # Create an empty image with the same shape as the input
+    class_image = np.zeros((image.shape[0], image.shape[1]), dtype=np.uint8)
+
+    # Iterate through the color to class mapping
+    for color, class_id in color_to_class.items():
+        # Create a mask for the current color
+        mask = np.all(image == np.array(color), axis=-1)
+        # Assign the class ID to the corresponding pixels in the class image
+        class_image[mask] = class_id
+
+    return class_image
+def convert_class_to_color(image):
+    """
+    Convert a class label image to a color image
+    """
+    # Create an empty image with the same shape as the input
+    color_image = np.zeros((image.shape[0], image.shape[1], 3), dtype=np.uint8)
+
+    # Iterate through the class to color mapping
+    for color, class_id in color_to_class.items():
+        # Create a mask for the current class ID
+        mask = (image == class_id)
+        # Assign the color to the corresponding pixels in the color image
+        color_image[mask] = np.array(color)
+
+    return color_image
+    '''

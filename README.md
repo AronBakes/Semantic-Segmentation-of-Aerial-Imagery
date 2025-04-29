@@ -9,7 +9,7 @@ This repository contains our CAB420 Group Project for Semantic Segmentation of A
 | Folder/File | Description |
 |:------------|:------------|
 | `/libs` | Python code (data splitters, model builders, etc.) |
-| `/output` | (Optional) Output folder for logs/results |
+| `/output` | Output folder for figures/results |
 | `main.py` | Main training script |
 | `jupyter.ipynb` | Example or experimentation notebook |
 | `README.md` | Project overview |
@@ -40,21 +40,26 @@ To split the dataset into `train`, `val`, and `test`:
 
 ```bash
 python3 libs/datasets.py
-# CAB420 - Semantic Segmentation of Aerial Imagery
+```
 
-This project investigates how semantic segmentation of aerial imagery can be improved by combining RGB and elevation data.
+After running this you should see the output:
+📂 TRAIN: 44 images | 44 elevations | 44 labels
+
+📂 VAL: 5 images | 5 elevations | 5 labels
+
+📂 TEST: 6 images | 6 elevations | 6 labels
+
 
 ## Group Members
 - Aron Bakes (n11405384)
 - Deegan Marks (n11548444)
 - Jordan Geltch-Robb (n11427515)
 
+
 ## Project Structure
 - Python scripts and Jupyter notebooks are located in this folder.
-- Datasets (if any) are inside `Data/` subfolder.
 
 ## Run Instructions
 - Open the `.ipynb` notebooks with Jupyter or VS Code.
 - Alternatively, run `.py` scripts directly.
 
-# Hello
