@@ -1,5 +1,10 @@
-#Ignore dataset
+# Ignore dataset folders
 data/
+dataset-medium/
+dd-ml-segmentation-benchmark/
+
+# Ignore wandb logs
+wandb/
 
 # Ignore external reference project
 dd-ml-segmentation-benchmark/
