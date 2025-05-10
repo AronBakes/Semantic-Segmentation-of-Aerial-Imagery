@@ -1,39 +1,55 @@
 # libs/scoring.py
 
-import os
 import numpy as np
-import cv2
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, jaccard_score
 
-def score_predictions(dataset_name, basedir, num_classes=7):
-    print("Scoring predictions...")
+# Class label mapping (index: name)
+CLASS_NAMES = [
+    "Building",    # 0
+    "Clutter",     # 1
+    "Vegetation",  # 2
+    "Water",       # 3
+    "Ground",      # 4
+    "Car"           # 5
+]
 
-    pred_dir = os.path.join(basedir, 'predictions')
-    gt_dir = 'data/test/labels'
+IGNORE_CLASS_INDEX = 6
 
-    pred_files = os.listdir(pred_dir)
+# Colour-to-class mapping (for reference or decoding colour masks)
+COLOR_TO_CLASS = {
+    (75, 25, 230): 0,       # BUILDING
+    (180, 30, 145): 1,      # CLUTTER
+    (75, 180, 60): 2,       # VEGETATION
+    (48, 130, 245): 3,      # WATER
+    (255, 255, 255): 4,     # GROUND
+    (200, 130, 0): 5,       # CAR
+    (255, 0, 255): 6        # IGNORE
+}
 
-    total_iou = np.zeros(num_classes)
-    total_pixels = np.zeros(num_classes)
 
-    for file_name in pred_files:
-        pred = cv2.imread(os.path.join(pred_dir, file_name), cv2.IMREAD_GRAYSCALE)
-        gt = cv2.imread(os.path.join(gt_dir, file_name), cv2.IMREAD_GRAYSCALE)
+def evaluate_predictions(pred_mask, true_mask):
+    """
+    Compare predicted and true masks using classification metrics.
+    Excludes IGNORE pixels (label = 6).
 
-        for cls in range(num_classes):
-            pred_mask = (pred == cls)
-            gt_mask = (gt == cls)
+    Args:
+        pred_mask (np.ndarray): predicted labels, shape (H, W)
+        true_mask (np.ndarray): ground truth labels, shape (H, W)
+    """
+    assert pred_mask.shape == true_mask.shape, "Prediction and label shape mismatch"
 
-            intersection = np.logical_and(pred_mask, gt_mask).sum()
-            union = np.logical_or(pred_mask, gt_mask).sum()
+    # Mask out IGNORE pixels
+    valid_mask = (true_mask != IGNORE_CLASS_INDEX)
+    y_pred = pred_mask[valid_mask].flatten()
+    y_true = true_mask[valid_mask].flatten()
 
-            if union != 0:
-                total_iou[cls] += intersection / union
-                total_pixels[cls] += 1
+    print("\n--- Classification Report ---")
+    print(classification_report(y_true, y_pred, target_names=CLASS_NAMES, digits=3))
 
-    miou_per_class = total_iou / np.maximum(total_pixels, 1)
-    miou = np.mean(miou_per_class)
+    print("\n--- Confusion Matrix ---")
+    print(confusion_matrix(y_true, y_pred))
 
-    print(f"Mean IoU: {miou:.4f}")
-
-    return {'miou': miou}, miou_per_class
+    print("\n--- Mean IoU ---")
+    miou = jaccard_score(y_true, y_pred, average='macro')
+    print(f"Mean IoU (macro): {miou:.3f}")
+    return miou
