@@ -1,4 +1,7 @@
-#Ignore dataset
+# Ignore main, defined in google colab
+main.ipynb
+
+# Ignore dataset
 data/
 dataset-medium/
 
@@ -24,3 +27,6 @@ Thumbs.db
 *.log
 *.tmp
 *.bak
+
+#Ignore Python virtual environment
+venv/
