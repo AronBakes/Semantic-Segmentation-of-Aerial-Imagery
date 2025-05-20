@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=flat-square)
 
-This project investigates how semantic segmentation of aerial imagery can be improved by combining **RGB** and **elevation (DEM)** data. The objective is to classify each pixel into meaningful categories using models like **U-Net**.
+This project investigates how semantic segmentation of aerial imagery can be improved by combining **RGB** and **elevation (DEM)** data. The objective is to classify each pixel into meaningful categories using models like **U-Net** and **SegFomrer**.
 
 ---
 
@@ -135,7 +135,7 @@ Example output from `visualise_prediction()`:
 - Problem regions are skipped during chipping
 - 100% background tiles are discarded
 - >95% background tiles are skipped **unless** they contain rare classes
-- Evaluation is run on **all test batches**, not just a single sample
+- Evaluation is run on **all test batches**
 
 ---
 
