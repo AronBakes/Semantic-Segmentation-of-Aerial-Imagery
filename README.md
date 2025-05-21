@@ -28,7 +28,7 @@ This project investigates how semantic segmentation of aerial imagery can be imp
 ├── training.ipynb        # Training loop and evaluation
 ├── scoring.ipynb         # Test set evaluation metrics
 ├── util.ipynb            # Utility functions and plotting
-├── chip_dataset.py       # Optional: preprocessing script to create chips
+├── chips.py       # Optional: preprocessing script to create chips
 └── README.md             # Project description
 ```
 
@@ -72,7 +72,7 @@ train_model(
     model_type="unet",
     batch_size=8,
     epochs=50,
-    steps_per_epoch=100
+    steps_per_epoch=128
 )
 ```
 
