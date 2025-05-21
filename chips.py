@@ -12,9 +12,9 @@ from collections import defaultdict
 # === CONFIG ===
 IN_DIR = 'dataset-medium'  # expects subfolders images/, elevations/, labels/
 OUT_DIR = 'data/chipped'
-TILE_SIZE = 300
-TRAIN_STRIDE = 100
-EVAL_STRIDE = 300  # for val/test
+TILE_SIZE = 256
+TRAIN_STRIDE = 64
+EVAL_STRIDE = 256  # for val/test
 IGNORE_COLOR = (255, 0, 255)
 IGNORE_THRESHOLD = 0.0
 BACKGROUND_CLASS = 4
