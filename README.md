@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=flat-square)
 
-This project investigates how semantic segmentation of aerial imagery can be improved by combining **RGB** and **elevation (DEM)** data. The objective is to classify each pixel into meaningful categories using models like **U-Net** and **SegFormer**.
+This project investigates how semantic segmentation of aerial imagery can be improved by combining **RGB** and **elevation (DEM)** data. The objective is to classify each pixel into meaningful categories using DL models **U-Net** and **SegFormer**, and non-DL model **CRF**.
 
 ---
 
