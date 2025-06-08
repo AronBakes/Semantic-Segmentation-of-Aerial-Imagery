@@ -120,4 +120,5 @@ evaluate_on_test(model, test_gen, n_vis=10)
 
 ## 📄 License
 
-This repository is provided for educational purposes as part of the CAB420 course at QUT. See the [LICENSE](./LICENSE) file for usage terms.
+This project is licensed for educational use as part of CAB420 at QUT. See the [LICENSE](LICENSE) file for details.
+
