@@ -16,6 +16,14 @@ This project investigates the use of RGB and elevation (DEM) data to improve sem
 
 ---
 
+## Dataset
+
+This project uses the [Aerial Semantic Segmentation Dataset](https://drive.google.com/file/d/1FiQQ-fKHpBsOq0sp2e-GxNUtQSgvzAOY/view?usp=sharing), provided for CAB420 coursework. The dataset includes RGB, elevation, and slope maps with pixel-level annotations across six classes: building, clutter, vegetation, water, background, and car.
+
+> **Note:** Dataset contains annotation inconsistencies (e.g. partial/mixed labelling of cars as clutter).
+
+---
+
 ## 📁 Project Structure
 
 ```
