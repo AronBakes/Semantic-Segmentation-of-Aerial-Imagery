@@ -2,13 +2,14 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square)
-![Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Complete-green?style=flat-square)
 
-This project investigates how semantic segmentation of aerial imagery can be improved by combining **RGB** and **elevation (DEM)** data. The objective is to classify each pixel into meaningful categories using models like **U-Net** and **SegFormer**.
+This project investigates the use of RGB and elevation (DEM) data to improve semantic segmentation of aerial imagery. Using both convolutional and transformer-based architectures, we evaluate the performance impact of multimodal fusion on per-pixel classification accuracy.
 
 ---
 
 ## 👥 Group Members
+
 - **Aron Bakes** (n11405384)
 - **Deegan Marks** (n11548444)
 - **Jordan Geltch-Robb** (n11427515)
@@ -18,18 +19,19 @@ This project investigates how semantic segmentation of aerial imagery can be imp
 ## 📁 Project Structure
 
 ```
-├── data/                 # Chipped dataset (train/val/test splits)
-│   ├── train/
-│   ├── val/
-│   ├── test/
-│   └── tiles_metadata.csv
-├── data.ipynb            # Data loading and generator logic
-├── models.ipynb          # U-Net and Multi-U-Net model definitions
-├── training.ipynb        # Training loop and evaluation
-├── scoring.ipynb         # Test set evaluation metrics
-├── util.ipynb            # Utility functions and plotting
-├── chip_dataset.py       # Optional: preprocessing script to create chips
-└── README.md             # Project description
+├── _main.ipynb           # Project entry point and main training loop
+├── callbacks.ipynb       # Custom callbacks (early stopping, metrics)
+├── data.ipynb            # Dataset generation, augmentations, loading
+├── distribute.ipynb      # Strategy for training across multiple devices
+├── inference.ipynb       # Visualisation and prediction for test data
+├── models.ipynb          # Model definitions for U-Net and SegFormer
+├── scoring.ipynb         # Evaluation metrics (IoU, F1, etc.)
+├── segformer.ipynb       # SegFormer architecture implementation
+├── training.ipynb        # Training configuration and execution
+├── util.ipynb            # Utility functions and visualisation tools
+├── scene_metadata.csv    # Tile-level metadata (test set)
+├── train_metadata.csv    # Tile-level metadata (train/val)
+└── README.md             # This file
 ```
 
 ---
@@ -44,18 +46,17 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-> 📦 Dependencies include: `tensorflow`, `numpy`, `opencv-python`, `matplotlib`, etc.
+Dependencies include `tensorflow`, `numpy`, `opencv-python`, `matplotlib`, and others.
 
 ### 2. Prepare Dataset
 
-- Place your raw dataset in `dataset-medium/`
-- Run the chipping script to split it into tiles:
+Place raw imagery and labels in `dataset/`, then chip and structure with:
 
 ```bash
 python chip_dataset.py
 ```
 
-This will populate the folders:
+Expected output directories:
 - `data/chipped/train/`
 - `data/chipped/val/`
 - `data/chipped/test/`
@@ -64,15 +65,14 @@ This will populate the folders:
 
 ## 🧠 Model Training
 
-Open `training.ipynb` and run:
+Launch from `_main.ipynb` and select model/config:
 
 ```python
 train_model(
-    input_type="rgb_elevation",
-    model_type="unet",
-    batch_size=8,
+    model_type='segformer',        # or 'unet'
+    input_type='rgb_elev',         # or 'rgb'
     epochs=50,
-    steps_per_epoch=100
+    batch_size=8
 )
 ```
 
@@ -80,65 +80,44 @@ train_model(
 
 ## ✅ Evaluation
 
-### Automatically After Training
-Test evaluation runs automatically at the end of training using:
+Automatic evaluation runs at the end of training. To manually re-evaluate:
 
 ```python
-evaluate_on_test(model, test_gen, n_vis=10)
-```
-
-### Manual Test Evaluation
-You can re-run it any time using:
-
-```python
-test_gen = StreamingDataGenerator(...)
 evaluate_on_test(model, test_gen, n_vis=10)
 ```
 
 ---
 
-## 🖼️ Sample Predictions
+## 📷 Sample Predictions
 
-Example output from `visualise_prediction()`:
-
-| RGB Image | Ground Truth | Model Prediction |
-|-----------|--------------|------------------|
-| ![](docs/sample_rgb.png) | ![](docs/sample_true.png) | ![](docs/sample_pred.png) |
-
-*(Add your own images in a `/docs` folder or embed inline in notebook)*
+| RGB Image | Ground Truth | Prediction |
+|-----------|--------------|------------|
+| ![](docs/sample_rgb.png) | ![](docs/sample_gt.png) | ![](docs/sample_pred.png) |
 
 ---
 
 ## 🏷️ Class Labels
 
-| ID | Class        | Colour (RGB)     |
-|----|--------------|------------------|
-| 0  | Building     | (230, 25, 75)     |
-| 1  | Clutter      | (145, 30, 180)    |
-| 2  | Vegetation   | (60, 180, 75)     |
-| 3  | Water        | (245, 130, 48)    |
-| 4  | Background   | (255, 255, 255)   |
-| 5  | Car          | (0, 130, 200)     |
-
----
-
-## 📊 Class Distribution Tracking
-
-- `DistributionLogger` tracks class balance per epoch
-- Cumulative counts are plotted at the end of training
-- Final per-class distribution is printed in percentages
+| ID | Class      | Colour (RGB)     |
+|----|------------|------------------|
+| 0  | Building   | (230, 25, 75)     |
+| 1  | Clutter    | (145, 30, 180)    |
+| 2  | Vegetation | (60, 180, 75)     |
+| 3  | Water      | (245, 130, 48)    |
+| 4  | Background | (255, 255, 255)   |
+| 5  | Car        | (0, 130, 200)     |
 
 ---
 
 ## 📌 Notes
 
-- Problem regions are skipped during chipping
-- 100% background tiles are discarded
-- >95% background tiles are skipped **unless** they contain rare classes
-- Evaluation is run on **all test batches**
+- Elevation/slope improves segmentation of buildings, roads, and water.
+- Loss functions use CCE + Dice + Focal with tuned weights.
+- Dataset contains inconsistencies (e.g. dual-labelling of cars/clutter).
+- All models trained and tested on 256×256 image tiles.
 
 ---
 
 ## 📄 License
 
-This repository is part of the CAB420 course at QUT and intended for academic use only.
+This repository is provided for educational purposes as part of the CAB420 course at QUT. See the [LICENSE](./LICENSE) file for usage terms.
