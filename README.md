@@ -1,4 +1,4 @@
-# 🛰️ CAB420 - Semantic Segmentation of Aerial Imagery
+# 🛰️ Semantic Segmentation of Aerial Imagery - Drone Deploy
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square)
@@ -8,11 +8,11 @@ This project investigates the use of RGB and elevation (DEM) data to improve sem
 
 ---
 
-## 👥 Group Members
+## 👥 Contributors
 
-- **Aron Bakes** (n11405384)
-- **Deegan Marks** (n11548444)
-- **Jordan Geltch-Robb** (n11427515)
+- **Aron Bakes** 
+- **Deegan Marks** 
+- **Jordan Geltch-Robb** 
 
 ---
 
@@ -31,7 +31,6 @@ This project uses the [Aerial Semantic Segmentation Dataset](https://drive.googl
 ├── callbacks.ipynb       # Custom callbacks (early stopping, metrics)
 ├── data.ipynb            # Dataset generation, augmentations, loading
 ├── distribute.ipynb      # Strategy for training across multiple devices
-├── inference.ipynb       # Visualisation and prediction for test data
 ├── models.ipynb          # Model definitions for U-Net and SegFormer
 ├── scoring.ipynb         # Evaluation metrics (IoU, F1, etc.)
 ├── segformer.ipynb       # SegFormer architecture implementation
@@ -109,11 +108,11 @@ evaluate_on_test(model, test_gen, n_vis=10)
 | ID | Class      | Colour (RGB)     |
 |----|------------|------------------|
 | 0  | Building   | (230, 25, 75)     |
-| 1  | Clutter    | (145, 30, 180)    |
 | 2  | Vegetation | (60, 180, 75)     |
-| 3  | Water      | (245, 130, 48)    |
+| 3  | Water      | (0, 130, 200)     |
 | 4  | Background | (255, 255, 255)   |
-| 5  | Car        | (0, 130, 200)     |
+| 5  | Car        | (245, 130, 48)    |
+| 5  | Road       | (128, 128, 128)     |
 
 ---
 
@@ -122,7 +121,7 @@ evaluate_on_test(model, test_gen, n_vis=10)
 - Elevation/slope improves segmentation of buildings, roads, and water.
 - Loss functions use CCE + Dice + Focal with tuned weights.
 - Dataset contains inconsistencies (e.g. dual-labelling of cars/clutter).
-- All models trained and tested on 256×256 image tiles.
+- All models trained and tested on 512×512 image tiles.
 
 ---
 
