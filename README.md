@@ -1,7 +1,7 @@
 # 🛰️ Semantic Segmentation of Aerial Imagery - Drone Deploy
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
-![License](https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-Complete-green?style=flat-square)
 
 This project investigates the use of RGB and elevation (DEM) data to improve semantic segmentation of aerial imagery. Using both convolutional and transformer-based architectures, we evaluate the performance impact of multimodal fusion on per-pixel classification accuracy.
@@ -127,5 +127,5 @@ evaluate_on_test(model, test_gen, n_vis=10)
 
 ## 📄 License
 
-This project is licensed for educational use as part of CAB420 at QUT. See the [LICENSE](LICENSE) file for details.
+This project's code is released under the MIT License. You are free to use, modify, and distribute the code, provided the original copyright and license notice are included. See the [LICENSE](LICENSE) file for details.
 
