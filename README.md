@@ -1,24 +1,24 @@
-# 🛰️ Semantic Segmentation of Aerial Imagery - Drone Deploy
+# 🛰️ CAB420 - Semantic Segmentation of Aerial Imagery
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![License](https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-Complete-green?style=flat-square)
 
 This project investigates the use of RGB and elevation (DEM) data to improve semantic segmentation of aerial imagery. Using both convolutional and transformer-based architectures, we evaluate the performance impact of multimodal fusion on per-pixel classification accuracy.
 
 ---
 
-## 👥 Contributors
+## 👥 Group Members
 
-- **Aron Bakes** 
-- **Deegan Marks** 
-- **Jordan Geltch-Robb** 
+- **Aron Bakes** (n11405384)
+- **Deegan Marks** (n11548444)
+- **Jordan Geltch-Robb** (n11427515)
 
 ---
 
 ## 📦 Dataset
 
-This project uses the [Aerial Semantic Segmentation Dataset](https://www.kaggle.com/datasets/mightyrains/drone-deploy-medium-dataset). The dataset includes RGB, elevation, and slope maps with pixel-level annotations across six classes: building, clutter, vegetation, water, background, and car.
+This project uses the [Aerial Semantic Segmentation Dataset](https://drive.google.com/file/d/1FiQQ-fKHpBsOq0sp2e-GxNUtQSgvzAOY/view?usp=sharing), provided for CAB420 coursework. The dataset includes RGB, elevation, and slope maps with pixel-level annotations across six classes: building, clutter, vegetation, water, background, and car.
 
 > **Note:** Dataset contains annotation inconsistencies (e.g. partial/mixed labelling of cars as clutter).
 
@@ -31,6 +31,7 @@ This project uses the [Aerial Semantic Segmentation Dataset](https://www.kaggle.
 ├── callbacks.ipynb       # Custom callbacks (early stopping, metrics)
 ├── data.ipynb            # Dataset generation, augmentations, loading
 ├── distribute.ipynb      # Strategy for training across multiple devices
+├── inference.ipynb       # Visualisation and prediction for test data
 ├── models.ipynb          # Model definitions for U-Net and SegFormer
 ├── scoring.ipynb         # Evaluation metrics (IoU, F1, etc.)
 ├── segformer.ipynb       # SegFormer architecture implementation
@@ -108,11 +109,11 @@ evaluate_on_test(model, test_gen, n_vis=10)
 | ID | Class      | Colour (RGB)     |
 |----|------------|------------------|
 | 0  | Building   | (230, 25, 75)     |
+| 1  | Clutter    | (145, 30, 180)    |
 | 2  | Vegetation | (60, 180, 75)     |
-| 3  | Water      | (0, 130, 200)     |
+| 3  | Water      | (245, 130, 48)    |
 | 4  | Background | (255, 255, 255)   |
-| 5  | Car        | (245, 130, 48)    |
-| 5  | Road       | (128, 128, 128)     |
+| 5  | Car        | (0, 130, 200)     |
 
 ---
 
@@ -121,11 +122,11 @@ evaluate_on_test(model, test_gen, n_vis=10)
 - Elevation/slope improves segmentation of buildings, roads, and water.
 - Loss functions use CCE + Dice + Focal with tuned weights.
 - Dataset contains inconsistencies (e.g. dual-labelling of cars/clutter).
-- All models trained and tested on 512×512 image tiles.
+- All models trained and tested on 256×256 image tiles.
 
 ---
 
 ## 📄 License
 
-This project's code is released under the MIT License. You are free to use, modify, and distribute the code, provided the original copyright and license notice are included. See the [LICENSE](LICENSE) file for details.
+This project is licensed for educational use as part of CAB420 at QUT. See the [LICENSE](LICENSE) file for details.
 
