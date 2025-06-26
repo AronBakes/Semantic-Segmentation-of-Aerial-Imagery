@@ -43,7 +43,7 @@ This project uses the [Aerial Semantic Segmentation Dataset](https://drive.googl
 ├── models_gen.ipynb          # Models used for synthetic data creation
 ├── train_generator.ipynb     # Train GAN to produce synthetic data
 ├── LICENSE
-└── README.md                 # This file
+└── README.md
 ```
 
 ---
