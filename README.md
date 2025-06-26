@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Complete-green?style=flat-square)
+![Status](https://img.shields.io/badge/Status-In-Development-yellow?style=flat-square)
 
 This project investigates the use of RGB and elevation (DEM) data to improve semantic segmentation of aerial imagery. Using both convolutional and transformer-based architectures, we evaluate the performance impact of multimodal fusion on per-pixel classification accuracy.
 
