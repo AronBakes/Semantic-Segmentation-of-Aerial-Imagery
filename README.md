@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square)
-![Status](https://img.shields.io/badge/Status-In-Development-yellow?style=flat-square)
+![Status](https://shields.io/badge/Status-In%20Development-yellow?style=flat-square)
 
 This project investigates the use of RGB and elevation (DEM) data to improve semantic segmentation of aerial imagery. Using both convolutional and transformer-based architectures, we evaluate the performance impact of multimodal fusion on per-pixel classification accuracy.
 
@@ -27,19 +27,23 @@ This project uses the [Aerial Semantic Segmentation Dataset](https://drive.googl
 ## 📁 Project Structure
 
 ```
-├── _main.ipynb           # Project entry point and main training loop
-├── callbacks.ipynb       # Custom callbacks (early stopping, metrics)
-├── data.ipynb            # Dataset generation, augmentations, loading
-├── distribute.ipynb      # Strategy for training across multiple devices
-├── inference.ipynb       # Visualisation and prediction for test data
-├── models.ipynb          # Model definitions for U-Net and SegFormer
-├── scoring.ipynb         # Evaluation metrics (IoU, F1, etc.)
-├── segformer.ipynb       # SegFormer architecture implementation
-├── training.ipynb        # Training configuration and execution
-├── util.ipynb            # Utility functions and visualisation tools
-├── scene_metadata.csv    # Tile-level metadata (test set)
-├── train_metadata.csv    # Tile-level metadata (train/val)
-└── README.md             # This file
+├── _main.ipynb               # Project entry point and main training loop
+├── callbacks.ipynb           # Custom callbacks (early stopping, metrics)
+├── data.ipynb                # Dataset generation, augmentations, loading
+├── distribute.ipynb          # Strategy for training across multiple devices
+├── inference.ipynb           # Visualisation and prediction for test data
+├── models.ipynb              # Model definitions for U-Net and SegFormer
+├── scoring.ipynb             # Evaluation metrics (IoU, F1, etc.)
+├── segformer.ipynb           # SegFormer architecture implementation
+├── training.ipynb            # Training configuration and execution
+├── util.ipynb                # Utility functions and visualisation tools
+├── scene_metadata.csv        # Tile-level metadata (test set)
+├── train_metadata.csv        # Tile-level metadata (train/val)
+├── data_gen.ipynb            # Data generator for GAN
+├── models_gen.ipynb          # Models used for synthetic data creation
+├── train_generator.ipynb     # Train GAN to produce synthetic data
+├── LICENSE
+└── README.md                 # This file
 ```
 
 ---
@@ -76,9 +80,16 @@ Expected output directories:
 Launch from `_main.ipynb` and select model/config:
 
 ```python
-train_model(
-    model_type='segformer',        # or 'unet'
-    input_type='rgb_elev',         # or 'rgb'
+train_unet(
+    model_type='enhanced_unet',        
+    input_type='rgb',                # or 'rgb_elev'
+    epochs=50,
+    batch_size=8
+)
+
+train_segformer(
+    model_type='B0',                 # or 'B1', 'B2', 'B3', 'B4', 'B5'
+    input_type='rgb',                # or 'rgb_elev'
     epochs=50,
     batch_size=8
 )
@@ -122,11 +133,11 @@ evaluate_on_test(model, test_gen, n_vis=10)
 - Elevation/slope improves segmentation of buildings, roads, and water.
 - Loss functions use CCE + Dice + Focal with tuned weights.
 - Dataset contains inconsistencies (e.g. dual-labelling of cars/clutter).
-- All models trained and tested on 256×256 image tiles.
+- All models trained and tested on 512×512 image tiles.
 
 ---
 
 ## 📄 License
 
-This project is licensed for educational use as part of CAB420 at QUT. See the [LICENSE](LICENSE) file for details.
+See the [LICENSE](LICENSE) file for details.
 
