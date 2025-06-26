@@ -1,4 +1,4 @@
-# 🛰️ CAB420 - Semantic Segmentation of Aerial Imagery
+# 🛰️ Semantic Segmentation of Aerial Imagery - Drone Deploy
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
@@ -8,17 +8,17 @@ This project investigates the use of RGB and elevation (DEM) data to improve sem
 
 ---
 
-## 👥 Group Members
+## 👥 Contributors
 
-- **Aron Bakes** (n11405384)
-- **Deegan Marks** (n11548444)
-- **Jordan Geltch-Robb** (n11427515)
+- **Aron Bakes**
+- **Deegan Marks**
+- **Jordan Geltch-Robb**
 
 ---
 
 ## 📦 Dataset
 
-This project uses the [Aerial Semantic Segmentation Dataset](https://drive.google.com/file/d/1FiQQ-fKHpBsOq0sp2e-GxNUtQSgvzAOY/view?usp=sharing), provided for CAB420 coursework. The dataset includes RGB, elevation, and slope maps with pixel-level annotations across six classes: building, clutter, vegetation, water, background, and car.
+This project uses the [Aerial Semantic Segmentation Dataset](https://drive.google.com/file/d/1FiQQ-fKHpBsOq0sp2e-GxNUtQSgvzAOY/view?usp=sharing). The dataset includes RGB, elevation, and slope maps with pixel-level annotations across six classes: building, clutter, vegetation, water, background, and car.
 
 > **Note:** Dataset contains annotation inconsistencies (e.g. partial/mixed labelling of cars as clutter).
 
