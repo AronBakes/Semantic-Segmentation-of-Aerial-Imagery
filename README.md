@@ -72,16 +72,23 @@ Dependencies include `tensorflow`, `numpy`, `opencv-python`, `matplotlib`, and o
 
 ### 2. Prepare Dataset
 
-Place raw imagery and labels in `dataset/`, then chip and structure with:
+Place raw imagery and labels in `dataset/`, choose tile size and stride, then create chipped data using:
 
 ```bash
-python chip_dataset.py
+
+# params defined at top of chips.py
+TILE_SIZE = 512
+STRIDE = 256
+
+python chips.py
 ```
 
 Expected output directories:
-- `data/chipped/train/`
-- `data/chipped/val/`
-- `data/chipped/test/`
+├── `data/chipped/train/`
+    ├── `elevations`
+    ├── `images`
+    ├── `labels`
+├── `data/train_metadata.csv`
 
 ---
 
@@ -167,8 +174,8 @@ def evaluate_on_test(
 
 - Elevation/slope improves segmentation of buildings, roads, and water.
 - Loss functions use CCE + Dice + Focal with tuned weights.
-- Dataset contains inconsistencies (e.g. dual-labelling of cars/clutter).
-- All models trained and tested on 512×512 image tiles.
+- Original dataset contains frequent inconsistencies.
+- All models orginally trained and tested on 256x256 image tiles, later changed to 512×512 image tiles for better generalisation.
 
 ---
 
