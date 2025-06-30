@@ -85,7 +85,7 @@ Place raw imagery and labels in `dataset/`, create chipped data using:
 python chips.py
 ```
 
-Expected output directories:
+Expected output structure:
 
 `data/chipped/train/`   
 ├── `elevations/`  
