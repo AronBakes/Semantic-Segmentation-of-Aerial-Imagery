@@ -62,7 +62,7 @@ Confusion matrices compare U-Net performance across configurations. The matrices
 
 | RGB Only (Old Labels)       | RGB+Elevation (Old Labels) | RGB Only (New Labels) |
 |-----------------------------|----------------------------|-----------------------|
-| ![Confusion Matrix Old RGB](output/confusion_matrix_rgb.png) | ![Confusion Matrix Old Elev](output/confusion_matrix_rgb_elev.png) | ![Confusion Matrix New RGB](output/confusion_matrix_new_lables.png) |
+| ![Confusion Matrix Old RGB](output/confusion_matrix_rgb.png) | ![Confusion Matrix Old Elev](output/confusion_matrix_rgb_elev.png) | ![Confusion Matrix New RGB](output/confusion_matrix_new_labels.png) |
 
 ### Reconstruction Results
 The U-Net model’s segmentation output is validated through full-tile reconstruction, stitching chipped predictions back into the original image. Figure 2 illustrates a reconstructed output, showcasing the model’s ability to segment classes like Roads and Buildings with improved spatial coherence, particularly with the re-labeled dataset.
