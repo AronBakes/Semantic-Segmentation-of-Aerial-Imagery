@@ -11,7 +11,7 @@ This project builds on the CAB420 Machine Learning Report (June 17, 2025) by enh
 
 ## Data Insights
 ### Chipping and Original Dataset
-The DroneDeploy dataset was chipped into 256x256 tiles, later upscaled to 512x512. Figure 1 shows a sample: RGB, elevation, and label map.
+The DroneDeploy dataset was chipped into 256x256 tiles, later updated to 512x512. Figure 1 shows a sample: RGB, elevation, and label map.
 
 **Pre-computed Output**:  
 - **Sample Image**: ![Sample Dataset](output/sample_dataset.jpg)  
