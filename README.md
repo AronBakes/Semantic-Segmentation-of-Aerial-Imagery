@@ -109,10 +109,33 @@ train_segformer(
 
 ## ✅ Evaluation
 
-Automatic evaluation runs at the end of training. To manually re-evaluate:
+Automatic evaluation runs at the end of training. 
 
 ```python
-evaluate_on_test(model, test_gen, n_vis=10)
+def evaluate_on_test(
+    model: tf.keras.Model,
+    test_gen: tf.data.Dataset,
+    test_df: pd.DataFrame,
+    out_dir: str,
+    image_dir: str,
+    label_dir: str,
+    tile_size: int = 256,
+    n_rows: int = 4,
+    n_cols: int = 3,
+) -> None:
+    """Evaluates the model on the test set and generates metrics and visualisations.
+
+    This includes mean IoU, macro F1, Precision, Recall, a confusion matrix,
+    and a prediction visualisation grid.
+
+    Args:
+        model (tf.keras.Model): Trained segmentation model.
+        test_gen (tf.data.Dataset): Test dataset generator.
+        test_df (pd.DataFrame): DataFrame with test metadata including tile IDs.
+        out_dir (str): Directory to save output plots.
+        tile_size (int): Size of each tile in pixels (e.g. 256x256).
+        n_rows (int): Number of rows in the prediction grid.
+        n_cols (int): Number of columns in the prediction grid.
 ```
 
 ---
