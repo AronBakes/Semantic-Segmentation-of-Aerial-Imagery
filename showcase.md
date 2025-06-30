@@ -34,6 +34,12 @@ The dataset was updated by adding the Road class (replacing Water), removing the
 **Pre-computed Output**:  
 - **New Road Label**: ![Road Label Example](output/107f24d6e9_F1BE1D4184INSPIRE-label.png)  
 
+### Class Distribution (Re-labeled)
+The re-labeled dataset’s distribution reflects the new class balance after adding Roads, removing Clutter, and adjusting colors.
+
+**Pre-computed Output**:  
+- **Re-labeled Class Distribution**: ![Re-labeled Class Distribution](output/relabeled_class_dist.png)  
+
 ## Segmentation Models
 ### Loss Functions
 A custom loss combined Categorical Cross-Entropy (0.25), Dice Loss (1.75), and Focal Loss (2.5, gamma=4) to handle imbalance. Class weights, fine-tuned and normalized, were used as alpha in Focal Loss and integrated into Dice Loss to prioritize hard cases. Additionally, 10% label smoothing was applied to improve generalization.
@@ -56,7 +62,7 @@ Confusion matrices compare U-Net performance across configurations. The matrices
 
 | RGB Only (Old Labels)       | RGB+Elevation (Old Labels) | RGB Only (New Labels) |
 |-----------------------------|----------------------------|-----------------------|
-| ![Confusion Matrix Old RGB](output/confusion_matrix_old_rgb.png) | ![Confusion Matrix Old Elev](output/confusion_matrix_old_elev.png) | ![Confusion Matrix New RGB](output/confusion_matrix_new_rgb.png) |
+| ![Confusion Matrix Old RGB](output/confusion_matrix_rgb.png) | ![Confusion Matrix Old Elev](output/confusion_matrix_rgb_elev.png) | ![Confusion Matrix New RGB](output/confusion_matrix_new_lables.png) |
 
 ### Reconstruction Results
 The U-Net model’s segmentation output is validated through full-tile reconstruction, stitching chipped predictions back into the original image. Figure 2 illustrates a reconstructed output, showcasing the model’s ability to segment classes like Roads and Buildings with improved spatial coherence, particularly with the re-labeled dataset.
@@ -79,6 +85,6 @@ Table 1 shows IoU improvements per class with re-labeling. Note: The reported 10
 | **mIoU**      | 0.3985      | 0.4295           | 0.5256                  |
 
 ## Conclusion
-This showcase highlights the U-Net model’s success with 512x512 images and re-labeled data, aiming for a 10% mIoU boost via Roads, Clutter removal, and color swaps. Elevation enhanced man-made structure detection, with re-labeling and custom loss strategies (class weights, 10% smoothing) refining accuracy. All results are pre-computed as of 08:00 PM AEST, June 30, 2025, using a 600MB model trained from scratch, not included here. Explore these static visuals without GPU needs!
+This showcase highlights the U-Net model’s success with 512x512 images and re-labeled data, aiming for a 10% mIoU boost via Roads, Clutter removal, and color swaps. Elevation enhanced man-made structure detection, with re-labeling and custom loss strategies (class weights, 10% smoothing) refining accuracy. All results are pre-computed as of 08:05 PM AEST, June 30, 2025, using a 600MB model trained from scratch, not included here. Explore these static visuals without GPU needs!
 
 **Note**: Figures are in the `output` folder. The 600MB `segmentation_model.keras` is unavailable; contact the author for access if needed. The mIoU discrepancy suggests further validation.
