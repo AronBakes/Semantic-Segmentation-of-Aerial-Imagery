@@ -1,12 +1,3 @@
-# Semantic-Segmentation-of-Aerial-Imagery
-
-## Navigation
-- [Home](README.md)
-- [Code](path/to/code.ipynb)
-- [Showcase](showcase.md)
-
-Welcome to the repository! Explore the project details and results.
-
 # 🛰️ Semantic Segmentation of Aerial Imagery - Drone Deploy
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
@@ -14,6 +5,15 @@ Welcome to the repository! Explore the project details and results.
 ![Status](https://shields.io/badge/Status-In%20Development-yellow?style=flat-square)
 
 This project investigates the use of RGB and elevation (DEM) data to improve semantic segmentation of aerial imagery. Using both convolutional and transformer-based architectures, we evaluate the performance impact of multimodal fusion on per-pixel classification accuracy.
+
+---
+
+## Navigation
+- [Home](README.md)
+- [Code](path/to/code.ipynb)
+- [Showcase](showcase.md)
+
+Welcome to the repository! Explore the project details and results.
 
 ---
 
