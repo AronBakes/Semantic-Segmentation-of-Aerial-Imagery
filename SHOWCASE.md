@@ -4,7 +4,7 @@
 This project builds on the CAB420 Machine Learning Report (June 17, 2025) by enhancing aerial imagery segmentation with RGB and elevation data. It showcases a pre-trained U-Net model on an updated DroneDeploy dataset, shifting from 256x256 to 512x512 images and adding Roads, achieving a 10% mIoU improvement after improving labels. All results are pre-computed, meaning they were generated previously with the 600MB U-net model trained from scratch (not included here), to enable static viewing without memory-intensive execution requiring a GPU.
 
 ## Key Updates from the Report
-- **Dataset Evolution**: Original dataset (Water, Building, Clutter, Vegetation, Background, Car) updated by adding Roads (replacing Water), removing Clutter due to ambiguity, and swapping Water (blue) and Car colors for better visual clarity, with a 10% mIoU gain.
+- **Dataset Evolution**: Original dataset (Water, Building, Clutter, Vegetation, Background, Car) updated by adding Roads, removing Clutter due to ambiguity, and swapping Water (now blue, previously orange) and Car colors for better visual clarity, with a 10% mIoU gain.
 - **Resolution Boost**: Increased from 256x256 to 512x512 images for better generalization, reducing batch size to a quarter (e.g., from 32 to 8) due to higher memory needs.
 - **Model Approach**: U-Net and SegFormer built from scratch without pre-training, as elevation data required custom architectures unsuitable for ImageNet backbones.
 - **Class Balance**: Updates balanced the distribution, though aerial imagery remains inherently imbalanced.
