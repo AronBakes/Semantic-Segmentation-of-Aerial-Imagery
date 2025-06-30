@@ -1,3 +1,12 @@
+# Semantic-Segmentation-of-Aerial-Imagery
+
+## Navigation
+- [Home](README.md)
+- [Code](path/to/code.ipynb)
+- [Showcase](showcase.md)
+
+Welcome to the repository! Explore the project details and results.
+
 # 🛰️ Semantic Segmentation of Aerial Imagery - Drone Deploy
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
