@@ -92,6 +92,12 @@ Expected output directories:
     ├── `labels`
 ├── `data/train_metadata.csv`
 
+data/chipped/train/
+├── elevations/
+├── images/
+├── labels/
+data/train_metadata.csv
+
 ---
 
 ## 🧠 Model Training
@@ -113,7 +119,7 @@ train_segformer(
     model_type='B0',                   # or 'B1', 'B2', 'B3', 'B4', 'B5'
     input_type='rgb',                  # or 'rgb_elev'
     epochs=80,
-    batch_size=8,
+    batch_size=4,
     train_time=240,                    # minutes
     tile_size=512,
     verbose=1,
