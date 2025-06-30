@@ -29,14 +29,14 @@ Welcome to the repository! Explore the project details and results.
 
 This project uses the [Aerial Semantic Segmentation Dataset](https://drive.google.com/file/d/1FiQQ-fKHpBsOq0sp2e-GxNUtQSgvzAOY/view?usp=sharing). The dataset includes RGB, elevation, and slope maps with pixel-level annotations across six classes: building, clutter, vegetation, water, background, and car.
 
-> **Note:** Dataset contains annotation inconsistencies (e.g. partial/mixed labelling of cars as clutter).
+> **Note:** Dataset contains numerous annotation inconsistencies.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-├── SHOWCASE.md               # Porject Overview
+├── SHOWCASE.md               # Project Overview
 ├── _main.ipynb               # Project entry point and main training loop
 ├── callbacks.ipynb           # Custom callbacks (early stopping, metrics)
 ├── data.ipynb                # Dataset generation, augmentations, loading
