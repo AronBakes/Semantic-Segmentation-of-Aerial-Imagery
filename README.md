@@ -36,6 +36,7 @@ This project uses the [Aerial Semantic Segmentation Dataset](https://drive.googl
 ## 📁 Project Structure
 
 ```
+├── SHOWCASE.md               # Porject Overview
 ├── _main.ipynb               # Project entry point and main training loop
 ├── callbacks.ipynb           # Custom callbacks (early stopping, metrics)
 ├── data.ipynb                # Dataset generation, augmentations, loading
@@ -46,8 +47,8 @@ This project uses the [Aerial Semantic Segmentation Dataset](https://drive.googl
 ├── segformer.ipynb           # SegFormer architecture implementation
 ├── training.ipynb            # Training configuration and execution
 ├── util.ipynb                # Utility functions and visualisation tools
-├── scene_metadata.csv        # Tile-level metadata (test set)
-├── train_metadata.csv        # Tile-level metadata (train/val)
+├── scene_metadata.csv        # Tile-level metadata 
+├── train_metadata.csv        # Scene-level metadata
 ├── data_gen.ipynb            # Data generator for GAN
 ├── models_gen.ipynb          # Models used for synthetic data creation
 ├── train_generator.ipynb     # Train GAN to produce synthetic data
@@ -120,7 +121,7 @@ evaluate_on_test(model, test_gen, n_vis=10)
 
 | RGB Image | Ground Truth | Prediction |
 |-----------|--------------|------------|
-| ![](docs/sample_rgb.png) | ![](docs/sample_gt.png) | ![](docs/sample_pred.png) |
+| ![](output/sample_rgb.png) | ![](output/sample_gt.png) | ![](output/sample_pred.png) |
 
 ---
 
