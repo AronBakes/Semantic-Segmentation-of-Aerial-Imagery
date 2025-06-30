@@ -1,13 +1,13 @@
 # Showcase: Semantic Segmentation of Aerial Imagery with RGB and Elevation Data
 
 ## Overview
-This project builds on the CAB420 Machine Learning Report (June 17, 2025) by enhancing aerial imagery segmentation with RGB and elevation data. It showcases a pre-trained U-Net model on an updated DroneDeploy dataset, shifting from 256x256 to 512x512 images and replacing Water with Roads, aiming for a 10% mIoU improvement. All results are pre-computed, requiring no model or live execution.
+This project builds on the CAB420 Machine Learning Report (June 17, 2025) by enhancing aerial imagery segmentation with RGB and elevation data. It showcases a pre-trained U-Net model on an updated DroneDeploy dataset, shifting from 256x256 to 512x512 images and adding Roads (replacing Water), aiming for a 10% mIoU improvement. All results are pre-computed, meaning they were generated previously with the 600MB model (not included here) to enable static viewing without execution or GPU needs.
 
 ## Key Updates from the Report
-- **Dataset Evolution**: Original dataset (Water, Building, Clutter, Vegetation, Background, Car) updated to include Roads instead of Water, with a 10% mIoU gain.
+- **Dataset Evolution**: Original dataset (Water, Building, Clutter, Vegetation, Background, Car) updated by adding Roads (replacing Water), removing Clutter due to ambiguity, and swapping Water (blue) and Car colors for better visual clarity, with a 10% mIoU gain.
 - **Resolution Boost**: Increased from 256x256 to 512x512 images for better generalization, reducing batch size to a quarter (e.g., from 32 to 8) due to higher memory needs.
 - **Model Approach**: U-Net and SegFormer built from scratch without pre-training, as elevation data required custom architectures unsuitable for ImageNet backbones.
-- **Class Balance**: Re-labeling and road inclusion balanced the distribution, though aerial imagery remains inherently imbalanced.
+- **Class Balance**: Updates balanced the distribution, though aerial imagery remains inherently imbalanced.
 
 ## Data Insights
 ### Chipping and Original Dataset
@@ -29,10 +29,10 @@ CutMix was applied to Water to address class imbalance, mixing patches to enhanc
 - **CutMix on Water**: ![CutMix Water Example](output/cutmix_water.png)  
 
 ### Re-labeling the Dataset
-Re-labeling replaced Water with Roads, fixed dataset errors, and adjusted to 512x512, improving mIoU by 10%. A new label example is shown below.
+The dataset was updated by adding the Road class (replacing Water), removing the ambiguous Clutter class, and swapping Water (now blue) and Car colors for clarity. Errors were fixed, and resolution adjusted to 512x512, improving mIoU by 10%. A new label example is shown below.
 
 **Pre-computed Output**:  
-- **New Road Label**: ![Road Label Example](output/road_label.png)  
+- **New Road Label**: ![Road Label Example](output/107f24d6e9_F1BE1D4184INSPIRE-label.png)  
 
 ## Segmentation Models
 ### Loss Functions
@@ -52,11 +52,11 @@ A new performance metric highlights the model’s progress.
 - **New Performance Plot**: ![New Performance Plot](output/new_plot.png)  
 
 ### Confusion Matrices
-Confusion matrices compare U-Net performance on old and new labels.
+Confusion matrices compare U-Net performance across configurations. The matrices are displayed side by side for comparison.
 
-**Pre-computed Outputs**:  
-- **Old Labels (U-Net)**: ![Confusion Matrix Old](output/confusion_matrix_old.png)  
-- **New Labels (U-Net)**: ![Confusion Matrix New](output/confusion_matrix_new.png)  
+| RGB Only (Old Labels)       | RGB+Elevation (Old Labels) | RGB Only (New Labels) |
+|-----------------------------|----------------------------|-----------------------|
+| ![Confusion Matrix Old RGB](output/confusion_matrix_old_rgb.png) | ![Confusion Matrix Old Elev](output/confusion_matrix_old_elev.png) | ![Confusion Matrix New RGB](output/confusion_matrix_new_rgb.png) |
 
 ### Reconstruction Results
 The U-Net model’s segmentation output is validated through full-tile reconstruction, stitching chipped predictions back into the original image. Figure 2 illustrates a reconstructed output, showcasing the model’s ability to segment classes like Roads and Buildings with improved spatial coherence, particularly with the re-labeled dataset.
@@ -79,6 +79,6 @@ Table 1 shows IoU improvements per class with re-labeling. Note: The reported 10
 | **mIoU**      | 0.3985      | 0.4295           | 0.5256                  |
 
 ## Conclusion
-This showcase highlights the U-Net model’s success with 512x512 images and re-labeled data, aiming for a 10% mIoU boost via Roads and error fixes. Elevation enhanced man-made structure detection, with re-labeling and custom loss strategies (class weights, 10% smoothing) refining accuracy. All results are pre-computed as of 07:45 PM AEST, June 30, 2025, using a 600MB model trained from scratch, not included here. Explore these static visuals without GPU needs!
+This showcase highlights the U-Net model’s success with 512x512 images and re-labeled data, aiming for a 10% mIoU boost via Roads, Clutter removal, and color swaps. Elevation enhanced man-made structure detection, with re-labeling and custom loss strategies (class weights, 10% smoothing) refining accuracy. All results are pre-computed as of 08:00 PM AEST, June 30, 2025, using a 600MB model trained from scratch, not included here. Explore these static visuals without GPU needs!
 
 **Note**: Figures are in the `output` folder. The 600MB `segmentation_model.keras` is unavailable; contact the author for access if needed. The mIoU discrepancy suggests further validation.
