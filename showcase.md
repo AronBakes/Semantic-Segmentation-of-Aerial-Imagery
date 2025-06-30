@@ -29,7 +29,7 @@ CutMix was applied to Water to address class imbalance, mixing patches to enhanc
 - **CutMix on Water**: ![CutMix Water Example](output/cutmix_water.png)  
 
 ### Re-labeling the Dataset
-The dataset was updated by adding the Road class (replacing Water), removing the ambiguous Clutter class, and swapping Water (now blue) and Car colors for clarity. Errors were fixed, and resolution adjusted to 512x512, improving mIoU by 10%. A new label example is shown below.
+The dataset was updated by adding the Road class, removing the ambiguous Clutter class, and swapping Water (now blue, previously orange) and Car colors for clarity. Errors were fixed, and resolution adjusted to 512x512, improving mIoU by 10%. A new label example is shown below.
 
 **Pre-computed Output**:  
 - **New Road Label**: ![Road Label Example](output/107f24d6e9_F1BE1D4184INSPIRE-label.png)  
