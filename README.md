@@ -72,14 +72,16 @@ Dependencies include `tensorflow`, `numpy`, `opencv-python`, `matplotlib`, and o
 
 ### 2. Prepare Dataset
 
-Place raw imagery and labels in `dataset/`, choose tile size and stride, then create chipped data using:
+Choose tile size and stride, defined at the top of chips.ipynb
 
 ```bash
+TILE_SIZE = 512    # may need to reduce this if mewmory is limited
+STRIDE = 256       # 50% overlap by default
+```
 
-# params defined at top of chips.py
-TILE_SIZE = 512
-STRIDE = 256
+Place raw imagery and labels in `dataset/`, create chipped data using:
 
+```bash
 python chips.py
 ```
 
@@ -99,16 +101,22 @@ Launch from `_main.ipynb` and select model/config:
 ```python
 train_unet(
     model_type='enhanced_unet',        
-    input_type='rgb',                # or 'rgb_elev'
-    epochs=50,
-    batch_size=8
+    input_type='rgb',                  # or 'rgb_elev'
+    epochs=80,
+    batch_size=8,
+    train_time=240,                    # minutes
+    tile_size=512,
+    verbose=1,
 )
 
 train_segformer(
-    model_type='B0',                 # or 'B1', 'B2', 'B3', 'B4', 'B5'
-    input_type='rgb',                # or 'rgb_elev'
-    epochs=50,
-    batch_size=8
+    model_type='B0',                   # or 'B1', 'B2', 'B3', 'B4', 'B5'
+    input_type='rgb',                  # or 'rgb_elev'
+    epochs=80,
+    batch_size=8,
+    train_time=240,                    # minutes
+    tile_size=512,
+    verbose=1,
 )
 ```
 
