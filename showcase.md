@@ -29,7 +29,7 @@ CutMix was applied to Water to address class imbalance, mixing patches to enhanc
 - **CutMix on Water**: ![CutMix Water Example](output/cutmix_water.png)  
 
 ### Re-labeling the Dataset
-The dataset was updated by adding the Road class, removing the ambiguous Clutter class, and swapping Water (now blue, previously orange) and Car colors for clarity. Errors were fixed, and resolution adjusted to 512x512, improving mIoU by 10%. A new label example is shown below.
+The dataset was updated by adding the Road class, removing the ambiguous Clutter class, and swapping Water (now blue, previously orange) and Car colors for clarity. Errors were fixed, and resolution adjusted to 512x512, improving mIoU by 10%. A new label example is shown below. The updated labeled dataset is available on Kaggle [here](https://www.kaggle.com/aronbakes/your-dataset-name).
 
 **Pre-computed Output**:  
 - **New Road Label**: ![Road Label Example](output/107f24d6e9_F1BE1D4184INSPIRE-label.png)  
@@ -47,15 +47,6 @@ A custom loss combined Categorical Cross-Entropy (0.25), Dice Loss (1.75), and F
 ## Evaluation
 ### RGB vs RGB + Elevation
 Elevation data boosted mIoU: U-Net from 0.3985 (RGB) to 0.4295 (RGB+Elevation).
-
-**Pre-computed Output**:  
-- **RGB vs RGB+Elevation**: ![RGB vs RGB+Elevation](output/rgb_vs_rgb_elev.png)  
-
-### New Plot
-A new performance metric highlights the model’s progress.
-
-**Pre-computed Output**:  
-- **New Performance Plot**: ![New Performance Plot](output/new_plot.png)  
 
 ### Confusion Matrices
 Confusion matrices compare U-Net performance across configurations. The matrices are displayed side by side for comparison.
@@ -87,4 +78,4 @@ Table 1 shows IoU improvements per class with re-labeling. Note: The reported 10
 ## Conclusion
 This showcase highlights the U-Net model’s success with 512x512 images and re-labeled data, aiming for a 10% mIoU boost via Roads and Clutter removal. The addition of the Road class allowed the model to better distinguish Background from Building, while removing the Clutter class eliminated class-wide confusion due to Clutter having a vague definition. Elevation enhanced man-made structure detection, with re-labeling and custom loss strategies (class weights, 10% smoothing) refining accuracy. All results are pre-computed using a 600MB model trained from scratch, not included here.
 
-**Note**: Figures are in the `output` folder. The 600MB `segmentation_model.keras` is unavailable; contact the author for access if needed. The mIoU discrepancy suggests further validation.
+**Note**: Figures are in the `output` folder. The 600MB `segmentation_model.keras` is unavailable; contact the author for access if needed. 
