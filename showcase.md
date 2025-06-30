@@ -58,6 +58,12 @@ Confusion matrices compare U-Net performance on old and new labels.
 - **Old Labels (U-Net)**: ![Confusion Matrix Old](output/confusion_matrix_old.png)  
 - **New Labels (U-Net)**: ![Confusion Matrix New](output/confusion_matrix_new.png)  
 
+### Reconstruction Results
+The U-Net model’s segmentation output is validated through full-tile reconstruction, stitching chipped predictions back into the original image. Figure 2 illustrates a reconstructed output, showcasing the model’s ability to segment classes like Roads and Buildings with improved spatial coherence, particularly with the re-labeled dataset.
+
+**Pre-computed Output**:  
+- **Reconstruction Output**: ![Reconstruction Result](output/reconstruction.png)  
+
 ### IoU Performance Per Class
 Table 1 shows IoU improvements per class with re-labeling. Note: The reported 10% mIoU improvement (from 0.4295 to ~0.4725) doesn’t fully align with the new labels mIoU (0.5256), suggesting a potential evaluation difference (e.g., RGB vs. RGB+Elevation) or calculation error—verify with your data.
 
@@ -73,6 +79,6 @@ Table 1 shows IoU improvements per class with re-labeling. Note: The reported 10
 | **mIoU**      | 0.3985      | 0.4295           | 0.5256                  |
 
 ## Conclusion
-This showcase highlights the U-Net model’s success with 512x512 images and re-labeled data, aiming for a 10% mIoU boost via Roads and error fixes. Elevation enhanced man-made structure detection, with re-labeling and custom loss strategies (class weights, 10% smoothing) refining accuracy. All results are pre-computed as of 07:35 PM AEST, June 30, 2025, using a 600MB model trained from scratch, not included here. Explore these static visuals without GPU needs!
+This showcase highlights the U-Net model’s success with 512x512 images and re-labeled data, aiming for a 10% mIoU boost via Roads and error fixes. Elevation enhanced man-made structure detection, with re-labeling and custom loss strategies (class weights, 10% smoothing) refining accuracy. All results are pre-computed as of 07:45 PM AEST, June 30, 2025, using a 600MB model trained from scratch, not included here. Explore these static visuals without GPU needs!
 
 **Note**: Figures are in the `output` folder. The 600MB `segmentation_model.keras` is unavailable; contact the author for access if needed. The mIoU discrepancy suggests further validation.
