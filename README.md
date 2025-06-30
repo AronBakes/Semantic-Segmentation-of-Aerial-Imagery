@@ -86,17 +86,12 @@ python chips.py
 ```
 
 Expected output directories:
-├── `data/chipped/train/`
-    ├── `elevations`
-    ├── `images`
-    ├── `labels`
-├── `data/train_metadata.csv`
 
-data/chipped/train/
-├── elevations/
-├── images/
-├── labels/
-data/train_metadata.csv
+`data/chipped/train/`   
+├── `elevations/`  
+├── `images/`  
+├── `labels/`  
+`data/train_metadata.csv`  
 
 ---
 
