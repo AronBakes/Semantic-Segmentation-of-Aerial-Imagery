@@ -62,7 +62,7 @@ The U-Net model’s segmentation output is validated through full-tile reconstru
 - **Reconstruction Output**: ![Reconstruction Result](output/reconstruction.png)  
 
 ### IoU Performance Per Class
-Table 1 shows IoU improvements per class with re-labeling. Note: The reported 10% mIoU improvement (from 0.4295 to ~0.4725) doesn’t fully align with the new labels mIoU (0.5256), suggesting a potential evaluation difference (e.g., RGB vs. RGB+Elevation) or calculation error—verify with your data.
+Table 1 shows mean IoU and IoU improvements per class before anb after re-labeling.
 
 | Class         | U-Net (RGB) | U-Net (RGB+Elev) | U-Net (RGB, New Labels) |
 |---------------|-------------|------------------|-------------------------|
