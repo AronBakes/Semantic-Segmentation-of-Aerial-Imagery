@@ -13,7 +13,7 @@ This project investigates the use of RGB and elevation (DEM) data to improve sem
 - [Showcase](SHOWCASE.md)
 - [Code](_main.ipynb)
 
-Welcome to the repository! Explore the project details and results.
+Welcome to the repository! See the Showcase markdown for key findings and results.
 
 ---
 
