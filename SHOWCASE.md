@@ -46,7 +46,7 @@ A custom loss combined Categorical Cross-Entropy (0.25), Dice Loss (1.75), and F
 
 ## Evaluation
 ### RGB vs RGB + Elevation
-Elevation data boosted mIoU: U-Net from 0.3985 (RGB) to 0.4295 (RGB+Elevation).
+Elevation data boosted mIoU: U-Net from 0.3985 (RGB) to 0.4295 (RGB+Elevation). This comparison is only valid against the original-labels / 256×256 configuration. The new-labels column below additionally changes resolution (256→512), drops Clutter, and adds Road, so it is not an apples-to-apples isolation of label quality. The 256→512 shift also halves the relative size of small objects like cars, which likely explains why Car IoU collapses to 0.0620 on the new-labels run.
 
 ### Confusion Matrices
 Confusion matrices compare U-Net performance across configurations. The matrices are displayed side by side for comparison.
@@ -62,7 +62,7 @@ The U-Net model’s segmentation output is validated through full-tile reconstru
 - **Reconstruction Output**: ![Reconstruction Result](output/reconstruction.png)  
 
 ### IoU Performance Per Class
-Table 1 shows mean IoU and IoU improvements per class before anb after re-labeling.
+Table 1 shows mean IoU and IoU improvements per class before and after re-labeling. The RGB+Elevation × new-labels configuration was not run, so only three columns are reported.
 
 | Class         | U-Net (RGB) | U-Net (RGB+Elev) | U-Net (RGB, New Labels) |
 |---------------|-------------|------------------|-------------------------|
@@ -76,6 +76,6 @@ Table 1 shows mean IoU and IoU improvements per class before anb after re-labeli
 | **mIoU**      | 0.3985      | 0.4295           | 0.5256                  |
 
 ## Conclusion
-This showcase highlights the U-Net model’s success with 512x512 images and re-labeled data, achieving for a 10% mIoU boost via Roads and Clutter removal. The addition of the Road class allowed the model to better distinguish Background from Building, while removing the Clutter class eliminated class-wide confusion due to Clutter having a vague definition. Elevation enhanced man-made structure detection, with re-labeling and custom loss strategies (class weights, 10% smoothing) refining accuracy. All results are pre-computed using a 600MB model trained from scratch, not included here.
+This showcase highlights the U-Net model’s success with 512x512 images and re-labeled data, achieving a 10% mIoU boost via Roads and Clutter removal. The addition of the Road class allowed the model to better distinguish Background from Building, while removing the Clutter class eliminated class-wide confusion due to Clutter having a vague definition. Elevation enhanced man-made structure detection, with re-labeling and custom loss strategies (class weights, 10% smoothing) refining accuracy. All results are pre-computed using a 600MB model trained from scratch, not included here.
 
 **Note**: Figures are in the `output` folder. The 600MB `segmentation_model.keras` is unavailable; contact the author for access if needed. 
