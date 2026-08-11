@@ -1,3 +1,5 @@
+
+
 # 🛰️ Semantic Segmentation of Aerial Imagery - Drone Deploy
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)
@@ -75,7 +77,7 @@ Dependencies include `tensorflow`, `numpy`, `opencv-python`, `matplotlib`, and o
 Choose tile size and stride, defined at the top of chips.ipynb
 
 ```bash
-TILE_SIZE = 512    # may need to reduce this if mewmory is limited
+TILE_SIZE = 512    # may need to reduce this if memory is limited
 STRIDE = 256       # 50% overlap by default
 ```
 
@@ -191,4 +193,3 @@ def evaluate_on_test(
 ## 📄 License
 
 See the [LICENSE](LICENSE) file for details.
-
